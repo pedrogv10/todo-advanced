@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 const AddTask = ({ addTodo }) => {
   const [taskInput1, setTaskInput1] = useState("");
   const [taskInput2, setTaskInput2] = useState("");
+  const [descriptionInput, setDescriptionInput] = useState(true);
 
   const handleTaskInput = (e) => {
     setTaskInput1(e.target.value);
@@ -42,7 +43,10 @@ const AddTask = ({ addTodo }) => {
           />
         </div>
 
-        <button type="button" id="addDescription" onClick={() => console.log('oi')}>
+        <button
+          type="button"
+          id="addDescription"
+          onClick={() => setDescriptionInput(!descriptionInput)}>
           <svg
             width="20"
             height="20"
@@ -58,9 +62,9 @@ const AddTask = ({ addTodo }) => {
           <p>Add description</p>
         </button>
 
-        {/* <div className="add-todo__description">
-          <label>
-            Here the Description, if necessary.
+        {descriptionInput && (
+          <div className="add-todo__description">
+            <label>Here the Description, if necessary.</label>
             <input
               type="text"
               name="description2"
@@ -69,9 +73,12 @@ const AddTask = ({ addTodo }) => {
               value={taskInput2}
               onChange={handleDescriptionInput}
             />
-          </label>
-        </div> */}
-        <button type="submit">Add TO-DO</button>
+          </div>
+        )}
+
+        <button id="addToDoButton" type="submit">
+          Add TO-DO
+        </button>
       </form>
     </div>
   );
