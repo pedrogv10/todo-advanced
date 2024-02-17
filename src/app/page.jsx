@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import React, { useState, useEffect } from "react";
 import AddTask from "../components/addTodo";
 import Todos from "../components/todos";
+import '../styles/main.scss';
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
@@ -30,7 +31,7 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.todo}>
           <div className={styles.header}>
-            <h1>Todo lisst</h1>
+            <h1>Todo List - No Login Needed</h1>
           </div>
           <AddTask addTodo={addTodo} />
         </div>
