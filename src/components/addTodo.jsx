@@ -1,11 +1,12 @@
 "use Client";
 
 import React, { useState, useEffect } from "react";
+import Button from "@mui/material/Button";
 
 const AddTask = ({ addTodo }) => {
   const [taskInput1, setTaskInput1] = useState("");
   const [taskInput2, setTaskInput2] = useState("");
-  const [descriptionInput, setDescriptionInput] = useState(true);
+  const [descriptionInput, setDescriptionInput] = useState(false);
 
   const handleTaskInput = (e) => {
     setTaskInput1(e.target.value);
@@ -76,9 +77,9 @@ const AddTask = ({ addTodo }) => {
           </div>
         )}
 
-        <button id="addToDoButton" type="submit">
+        <Button id="addToDoButton" type="submit">
           Add TO-DO
-        </button>
+        </Button>
       </form>
     </div>
   );
