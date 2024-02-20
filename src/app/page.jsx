@@ -13,32 +13,45 @@ export default function Home() {
   const addTodo = (todo) => {
     const newTodo = {
       ...todo,
-      index: todos.length,
+      index: Date.now(),
       todoDateAdded,
     };
 
-    console.log(newTodo);
-
     const newTodos = [...todos, newTodo];
 
-    setTodos(newTodos); 
-    localStorage.setItem("todos", JSON.stringify(newTodos)); 
-};
+    setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
+  };
+
   useEffect(() => {
     const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
     setTodos(existingTodos);
   }, []);
 
   useEffect(() => {
-    let date = new Date();
-    let dd = String(date.getDate()).padStart(2, "0");
-    let mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
-    let yyyy = date.getFullYear();
-    let todayDate = `${dd}/${mm}/${yyyy}`;
+    const date = new Date();
 
-    setTodoDateAdded(todayDate);
+    const dayOptions = { day: "2-digit" };
+    const monthOptions = { month: "short" };
+    const yearOptions = { year: "2-digit" };
+
+    // Use toLocaleString para obter o dia, mês e ano na forma de string
+    const day = date.toLocaleString("default", dayOptions);
+    const month = date.toLocaleString("default", monthOptions).toUpperCase(); // Mês em maiúsculas
+    const year = date.toLocaleString("default", yearOptions);
+
+    // Cominar as strings para criar a descrição
+    const dateDescription = `${day} ${month} ${year}`;
+
+    setTodoDateAdded(dateDescription);
   }, []);
 
+  const removeTodo = (indexToRemove) => {
+    const filteredTodos = todos.filter((todo) => todo.index !== indexToRemove);
+
+    setTodos(filteredTodos);
+    localStorage.setItem("todos", JSON.stringify(filteredTodos));
+  };
 
   return (
     <main className={styles.main}>
@@ -49,7 +62,7 @@ export default function Home() {
           </div>
           <div className={styles.elements}>
             <AddTask addTodo={addTodo} />
-            <Todos todos={todos} />
+            <Todos todos={todos} removeTodo={removeTodo} />
           </div>
         </div>
       </div>

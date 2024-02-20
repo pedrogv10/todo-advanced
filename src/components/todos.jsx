@@ -1,9 +1,10 @@
 "use Client";
 
 import React, { useState, useEffect } from "react";
-import { List, ListItem, ListItemText } from "@mui/material";
+import CalendarioIcon from "./icons/calendarioIcon";
+import DeleteIcon from "./icons/DeleteIcon";
 
-const Todos = ({ todos }) => {
+const Todos = ({ todos, removeTodo }) => {
   return (
     <>
       <div className="todo-lists">
@@ -20,7 +21,14 @@ const Todos = ({ todos }) => {
                     <li>{task.taskDescription}</li>
                   )}
                 </div>
-                <div></div>
+                <div className="todo-lists__single--date">
+                  <CalendarioIcon />
+                  <p>{task.todoDateAdded}</p>
+                </div>
+
+                <button onClick={() => removeTodo(task.index)} className="todo-lists__single--delete">
+                  <DeleteIcon />
+                </button>
               </div>
             ))}
             {todos?.length == 0 && (
