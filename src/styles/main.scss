@@ -103,6 +103,28 @@
     }
 }
 
+.todo-lists {
+    max-width: 831px;
+    width: 100%;
+    height: 552px;
+
+    border: 1px solid rgb(155, 155, 155);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 72px;
+
+    &__container {
+        width: 100%;
+        padding: 0 27px;
+    }
+
+    &__single {
+        
+    }
+
+}
+
 input {
     font-family: "Poppins", sans-serif;
 }

@@ -24,8 +24,3 @@ a {
     color-scheme: dark;
   }
 }
-
-.displayflex {
-  display: flex;
-  gap: 25px;
-}
