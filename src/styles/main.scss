@@ -114,10 +114,7 @@
 
     &__container {
         width: 100%;
-        padding: 0 27px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
+
     }
 
     &__single {
@@ -148,10 +145,18 @@
         }
     }
 
+    &__infos {
+        padding: 0 27px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
     &__title {
-        font-weight: 500;
+        font-weight: 600;
         text-align: center;
         font-size: 30px;
+        margin-bottom: 16px;
     }
 }
 

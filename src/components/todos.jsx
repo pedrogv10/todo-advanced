@@ -8,28 +8,27 @@ const Todos = ({ todos }) => {
     <>
       <div className="todo-lists">
         <div className="todo-lists__container">
-          {/* tenho que remover o h3 de dentro do container e colocar acima, pois se precisar de colocar um scrool, ele fica fixo 
-          TALVEZ colocar as estilizações do container em outra div pra que o container fique livre
-          */}
           <h3 className="todo-lists__title">
             Your <strong>TO-DO</strong> lists
           </h3>
-          {todos.map((task, index) => (
-            <div className="todo-lists__single" key={index}>
-              <div className="todo-lists__single--texts">
-                <h3>{task.taskInfo}</h3>
-                {task.taskDescription.length !== 0 && (
-                  <li>{task.taskDescription}</li>
-                )}
+          <div className="todo-lists__infos">
+            {todos.map((task, index) => (
+              <div className="todo-lists__single" key={index}>
+                <div className="todo-lists__single--texts">
+                  <h3>{task.taskInfo}</h3>
+                  {task.taskDescription.length !== 0 && (
+                    <li>{task.taskDescription}</li>
+                  )}
+                </div>
+                <div></div>
               </div>
-              <div></div>
-            </div>
-          ))}
-          {todos?.length == 0 && (
-            <div>
-              <h1>sem task</h1>
-            </div>
-          )}
+            ))}
+            {todos?.length == 0 && (
+              <div>
+                <h1>sem task</h1>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

@@ -8,23 +8,37 @@ import "../styles/main.scss";
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
+  const [todoDateAdded, setTodoDateAdded] = useState("");
 
-  const addTodo = (e) => {
+  const addTodo = (todo) => {
     const newTodo = {
-      taskInfo: e.taskInfo,
-      taskDescription: e.taskDescription,
+      ...todo,
+      index: todos.length,
+      todoDateAdded,
     };
+
+    console.log(newTodo);
 
     const newTodos = [...todos, newTodo];
 
-    setTodos(newTodos);
-    localStorage.setItem("todos", JSON.stringify(newTodos));
-  };
-
+    setTodos(newTodos); 
+    localStorage.setItem("todos", JSON.stringify(newTodos)); 
+};
   useEffect(() => {
     const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
     setTodos(existingTodos);
   }, []);
+
+  useEffect(() => {
+    let date = new Date();
+    let dd = String(date.getDate()).padStart(2, "0");
+    let mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
+    let yyyy = date.getFullYear();
+    let todayDate = `${dd}/${mm}/${yyyy}`;
+
+    setTodoDateAdded(todayDate);
+  }, []);
+
 
   return (
     <main className={styles.main}>
