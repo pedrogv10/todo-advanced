@@ -78,6 +78,18 @@
         transition: background-color 0.3s;
         width: 100%;
 
+        .plus-round {
+            background-color: #1E1E1E;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+
+            p {
+                font-size: 10px;
+                color: #42E8D8;
+            }
+        }
+
         p {
             font-size: 12px;
             font-weight: 600;
@@ -151,6 +163,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-right: 20px;
 
             p {
                 width: 20px;
