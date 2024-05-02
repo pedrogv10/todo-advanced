@@ -1,7 +1,7 @@
 "use Client";
 
-import React, { useState, useEffect } from "react";
-import CalendarioIcon from "./icons/calendarioIcon";
+import React from "react";
+import CalendarioIcon from "./icons/CalendarioIcon";
 import DeleteIcon from "./icons/DeleteIcon";
 
 const Todos = ({ todos, removeTodo }) => {
